@@ -11,5 +11,8 @@
 				"importSource": "preact"
 			}
 		}
+	},
+	"rspackExperiments": {
+		"preact": {}
 	}
 }

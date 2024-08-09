@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve as pathResolve } from "node:path";
 import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
+import PreactRefreshPlugin from "@rspack/plugin-preact-refresh";
 
 const resolve = pathResolve.bind(undefined, import.meta.dirname);
 
@@ -83,6 +84,7 @@ export default (env, argv) => {
 		plugins.push(new rspack.HtmlRspackPlugin({
 			template: "./index.html"
 		}))
+		plugins.push(new PreactRefreshPlugin({}))
 	}
 
 	return config;

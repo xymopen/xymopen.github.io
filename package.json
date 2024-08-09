@@ -23,8 +23,11 @@
 		"preact": "^10.22.1"
 	},
 	"devDependencies": {
+		"@prefresh/core": "^1.5.1",
+		"@prefresh/utils": "^1.2.0",
 		"@rspack/cli": "0.7.5",
 		"@rspack/core": "0.7.5",
+		"@rspack/plugin-preact-refresh": "0.7.5",
 		"@types/node": "ts5.3",
 		"@types/webpack-env": "ts5.3",
 		"typescript": "~5.3.3"
