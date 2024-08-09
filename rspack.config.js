@@ -1,5 +1,8 @@
+import { resolve as pathResolve } from "node:path";
 import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
+
+const resolve = pathResolve.bind(undefined, import.meta.dirname);
 
 const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
 
