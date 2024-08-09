@@ -14,6 +14,9 @@ const config = defineConfig({
 	entry: {
 		main: "./src/main.tsx"
 	},
+	output: {
+		path: resolve("dist/-/")
+	},
 	module: {
 		rules: [
 			{
@@ -53,6 +56,14 @@ const config = defineConfig({
 		]
 	},
 	plugins: [
+		new rspack.CopyRspackPlugin({
+			patterns: [
+				{
+					from: 'assets/index.html',
+					to: resolve('dist/index.html')
+				},
+			],
+		}),
 		new rspack.ProgressPlugin({})
 	],
 	experiments: {
