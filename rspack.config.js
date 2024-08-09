@@ -11,7 +11,7 @@ const TsSwcConfig = JSON.parse(readFileSync(resolve(".swc.typescript.swcrc"), "u
 
 const config = defineConfig({
 	entry: {
-		main: "./src/main.ts"
+		main: "./src/main.tsx"
 	},
 	module: {
 		rules: [
@@ -20,7 +20,7 @@ const config = defineConfig({
 				type: "asset"
 			},
 			{
-				test: /\.js$/,
+				test: /\.jsx?$/,
 				use: [
 					{
 						loader: "builtin:swc-loader",
@@ -35,7 +35,7 @@ const config = defineConfig({
 				]
 			},
 			{
-				test: /\.ts$/,
+				test: /\.tsx?$/,
 				use: [
 					{
 						loader: "builtin:swc-loader",
@@ -58,7 +58,7 @@ const config = defineConfig({
 		css: true
 	},
 	resolve: {
-		extensions: [".js", ".json", ".ts", ".wasm"]
+		extensions: [".js", ".jsx", ".json", ".ts", ".tsx", ".wasm"]
 	}
 });
 
