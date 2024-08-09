@@ -6,6 +6,7 @@ import { rspack } from "@rspack/core";
 const resolve = pathResolve.bind(undefined, import.meta.dirname);
 
 const targets = readFileSync(resolve(".browserslistrc"), "utf8").split(/\r?\n|\r(?!\n)/g).filter(line => line.trim() !== "");
+const SwcConfig = JSON.parse(readFileSync(resolve(".swcrc"), "utf8"));
 
 const config = defineConfig({
 	entry: {
@@ -23,12 +24,11 @@ const config = defineConfig({
 					{
 						loader: "builtin:swc-loader",
 						options: {
-							jsc: {
-								parser: {
-									syntax: "ecmascript"
-								}
-							},
-							env: { targets }
+							...SwcConfig,
+							env: {
+								...SwcConfig.env,
+								targets
+							}
 						}
 					}
 				]
