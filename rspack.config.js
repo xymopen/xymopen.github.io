@@ -6,11 +6,12 @@ import { rspack } from "@rspack/core";
 const resolve = pathResolve.bind(undefined, import.meta.dirname);
 
 const targets = readFileSync(resolve(".browserslistrc"), "utf8").split(/\r?\n|\r(?!\n)/g).filter(line => line.trim() !== "");
-const SwcConfig = JSON.parse(readFileSync(resolve(".swcrc"), "utf8"));
+const EsSwcConfig = JSON.parse(readFileSync(resolve(".swc.ecmascript.swcrc"), "utf8"));
+const TsSwcConfig = JSON.parse(readFileSync(resolve(".swc.typescript.swcrc"), "utf8"));
 
 const config = defineConfig({
 	entry: {
-		main: "./src/main.js"
+		main: "./src/main.ts"
 	},
 	module: {
 		rules: [
@@ -24,9 +25,24 @@ const config = defineConfig({
 					{
 						loader: "builtin:swc-loader",
 						options: {
-							...SwcConfig,
+							...EsSwcConfig,
 							env: {
-								...SwcConfig.env,
+								...EsSwcConfig.env,
+								targets
+							}
+						}
+					}
+				]
+			},
+			{
+				test: /\.ts$/,
+				use: [
+					{
+						loader: "builtin:swc-loader",
+						options: {
+							...TsSwcConfig,
+							env: {
+								...TsSwcConfig.env,
 								targets
 							}
 						}
@@ -40,6 +56,9 @@ const config = defineConfig({
 	],
 	experiments: {
 		css: true
+	},
+	resolve: {
+		extensions: [".js", ".json", ".ts", ".wasm"]
 	}
 });
 
