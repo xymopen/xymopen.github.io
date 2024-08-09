@@ -71,6 +71,10 @@ const config = defineConfig({
 export default (env, argv) => {
 	const plugins = /** @type {(import("@rspack/core").RspackPluginInstance | import("@rspack/core").RspackPluginFunction)[]} */ (config.plugins)
 
+	plugins.push(new rspack.DefinePlugin({
+		"import.meta.nodeEnv": JSON.stringify(process.env.NODE_ENV)
+	}))
+
 	if (argv.nodeEnv === 'production') {
 		config.devtool = false
 		plugins.push(new rspack.HtmlRspackPlugin({
