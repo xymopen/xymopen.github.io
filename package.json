@@ -1,0 +1,26 @@
+{
+	"name": "xymopen.github.io",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"author": {
+		"name": "Xu Yiming",
+		"url": "https://github.com/xymopen"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xymopen/xymopen.github.io"
+	},
+	"scripts": {
+		"dev": "rspack serve --mode=development --node-env=development",
+		"build": "rspack build --mode=production --node-env=production"
+	},
+	"packageManager": "pnpm@9.7.0",
+	"engines": {
+		"node": ">=20.11.0"
+	},
+	"devDependencies": {
+		"@rspack/cli": "0.7.5",
+		"@rspack/core": "0.7.5"
+	}
+}
