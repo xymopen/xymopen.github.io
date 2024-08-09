@@ -1,10 +1,11 @@
+import { readFileSync } from "node:fs";
 import { resolve as pathResolve } from "node:path";
 import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
 
 const resolve = pathResolve.bind(undefined, import.meta.dirname);
 
-const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
+const targets = readFileSync(resolve(".browserslistrc"), "utf8").split(/\r?\n|\r(?!\n)/g).filter(line => line.trim() !== "");
 
 const config = defineConfig({
 	entry: {
