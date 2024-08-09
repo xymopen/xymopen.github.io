@@ -6,7 +6,7 @@
 		/* Save .tsbuildinfo files to allow for incremental compilation of projects. */
 		// "incremental": true,
 		/* Enable constraints that allow a TypeScript project to be used with project references. */
-		// "composite": true,
+		"composite": true,
 		/* Specify the path to .tsbuildinfo incremental compilation file. */
 		// "tsBuildInfoFile": "./.tsbuildinfo",
 		/* Disable preferring source files instead of declaration files when referencing composite projects. */
@@ -21,7 +21,6 @@
 		"target": "ES2020",
 		/* Specify a set of bundled library declaration files that describe the target runtime environment. */
 		"lib": [
-			"DOM",
 			"ES2020"
 		],
 		/* Specify what JSX code is generated. */
@@ -41,17 +40,17 @@
 		/* Disable including any library files, including the default lib.d.ts. */
 		// "noLib": true,
 		/* Emit ECMAScript-standard-compliant class fields. */
-		"useDefineForClassFields": true,
+		// "useDefineForClassFields": true,
 		/* Control what method is used to detect module-format JS files. */
 		// "moduleDetection": "auto",
 
 		/* Modules */
 		/* Specify what module code is generated. */
-		"module": "ESNext",
+		"module": "NodeNext",
 		/* Specify the root folder within your source files. */
 		// "rootDir": "./",
 		/* Specify how TypeScript looks up a file from a given module specifier. */
-		"moduleResolution": "Bundler",
+		"moduleResolution": "NodeNext",
 		/* Specify the base directory to resolve non-relative module names. */
 		// "baseUrl": "./",
 		/* Specify a set of entries that re-map imports to additional lookup locations. */
@@ -62,7 +61,7 @@
 		// "typeRoots": [],
 		/* Specify type package names to be included without being referenced in a source file. */
 		"types": [
-			"webpack-env"
+			"node"
 		],
 		/* Allow accessing UMD globals from modules. */
 		// "allowUmdGlobalAccess": true,
@@ -77,7 +76,7 @@
 		/* Conditions to set in addition to the resolver-specific defaults when resolving imports. */
 		// "customConditions": [],
 		/* Enable importing .json files. */
-		"resolveJsonModule": true,
+		// "resolveJsonModule": true,
 		/* Enable importing files with any extension, provided a declaration file is present. */
 		// "allowArbitraryExtensions": true,
 		/* Disallow 'import's, 'require's or '<reference>'s from expanding the number of files TypeScript should add to a project. */
@@ -85,9 +84,9 @@
 
 		/* JavaScript Support */
 		/* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */
-		// "allowJs": true,
+		"allowJs": true,
 		/* Enable error reporting in type-checked JavaScript files. */
-		// "checkJs": true,
+		"checkJs": true,
 		/* Specify the maximum folder depth used for checking JavaScript files from 'node_modules'. Only applicable with 'allowJs'. */
 		// "maxNodeModuleJsDepth": 1,
 
@@ -138,9 +137,10 @@
 		// "declarationDir": "./",
 		/* Preserve unused imported values in the JavaScript output that would otherwise be removed. */
 		// "preserveValueImports": true,
+
 		/* Interop Constraints */
 		/* Ensure that each file can be safely transpiled without relying on other imports. */
-		"isolatedModules": true,
+		// "isolatedModules": true,
 		/* Do not transform or elide any imports or exports not marked as type-only, ensuring they are written in the output file's format based on the 'module' setting. */
 		// "verbatimModuleSyntax": true,
 		/* Allow 'import x from y' when a module doesn't have a default export. */
@@ -198,13 +198,7 @@
 		/* Skip type checking all .d.ts files. */
 		"skipLibCheck": true
 	},
-	"include": [
-		"./src/types/*",
-		"src"
-	],
-	"references": [
-		{
-			"path": "./tsconfig.build.json"
-		}
+	"files": [
+		"./rspack.config.js"
 	]
 }

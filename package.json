@@ -22,6 +22,7 @@
 	"devDependencies": {
 		"@rspack/cli": "0.7.5",
 		"@rspack/core": "0.7.5",
+		"@types/node": "ts5.3",
 		"@types/webpack-env": "ts5.3",
 		"typescript": "~5.3.3"
 	}

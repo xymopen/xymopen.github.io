@@ -14,6 +14,9 @@ importers:
       '@rspack/core':
         specifier: 0.7.5
         version: 0.7.5
+      '@types/node':
+        specifier: ts5.3
+        version: 22.2.0
       '@types/webpack-env':
         specifier: ts5.3
         version: 1.18.5
