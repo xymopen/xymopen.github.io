@@ -36,10 +36,7 @@ const config = defineConfig({
 		]
 	},
 	plugins: [
-		new rspack.ProgressPlugin({}),
-		new rspack.HtmlRspackPlugin({
-			template: "./index.html"
-		})
+		new rspack.ProgressPlugin({})
 	],
 	experiments: {
 		css: true
@@ -52,12 +49,21 @@ const config = defineConfig({
  * @returns {import("@rspack/core").RspackOptions}
  */
 export default (env, argv) => {
+	const plugins = /** @type {(import("@rspack/core").RspackPluginInstance | import("@rspack/core").RspackPluginFunction)[]} */ (config.plugins)
+
 	if (argv.nodeEnv === 'production') {
 		config.devtool = false
+		plugins.push(new rspack.HtmlRspackPlugin({
+			template: "./index.html",
+			minify: true
+		}))
 	}
 
 	if (argv.nodeEnv === 'development') {
 		config.devtool = "source-map"
+		plugins.push(new rspack.HtmlRspackPlugin({
+			template: "./index.html"
+		}))
 	}
 
 	return config;
