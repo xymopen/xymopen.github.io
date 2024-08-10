@@ -56,13 +56,11 @@ const config = defineConfig({
 		]
 	},
 	plugins: [
-		new rspack.CopyRspackPlugin({
-			patterns: [
-				{
-					from: 'assets/index.html',
-					to: resolve('dist/index.html')
-				},
-			],
+		new rspack.HtmlRspackPlugin({
+			template: "assets/index.html",
+			filename: resolve('dist/index.html'),
+			chunks: [],
+			minify: true
 		}),
 		new rspack.ProgressPlugin({})
 	],
