@@ -52,6 +52,14 @@ const config = defineConfig({
  * @returns {import("@rspack/core").RspackOptions}
  */
 export default (env, argv) => {
+	if (argv.nodeEnv === 'production') {
+		config.devtool = false
+	}
+
+	if (argv.nodeEnv === 'development') {
+		config.devtool = "source-map"
+	}
+
 	return config;
 }
 
