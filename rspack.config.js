@@ -52,6 +52,10 @@ const config = defineConfig({
 						}
 					}
 				]
+			},
+			{
+				test: /\.css$/,
+				type: 'css/auto'
 			}
 		]
 	},
@@ -64,9 +68,6 @@ const config = defineConfig({
 		}),
 		new rspack.ProgressPlugin({})
 	],
-	experiments: {
-		css: true
-	},
 	resolve: {
 		extensions: [".js", ".jsx", ".json", ".ts", ".tsx", ".wasm"]
 	}
@@ -97,7 +98,14 @@ export default (env, argv) => {
 		plugins.push(new rspack.HtmlRspackPlugin({
 			template: "./index.html"
 		}))
-		plugins.push(new PreactRefreshPlugin({}))
+		EsSwcConfig.experimental ??= {}
+		EsSwcConfig.experimental.plugins = [['@swc/plugin-prefresh', {}]]
+		TsSwcConfig.experimental ??= {}
+		TsSwcConfig.experimental.plugins = [['@swc/plugin-prefresh', {}]]
+		plugins.push(new PreactRefreshPlugin({
+			// The default somehow breaks resolution of `jsx-dev-runtime`
+			preactPath: 'preact'
+		}))
 	}
 
 	return config;
